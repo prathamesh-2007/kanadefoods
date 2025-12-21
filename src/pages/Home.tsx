@@ -196,7 +196,7 @@ export default function Home({ onNavigate }: HomeProps) {
                 At Kanade Foods and Agri Ventures LLP, we believe that healthy food starts with healthy soil. Our mission is to restore the earth's natural balance while empowering farmers with effective, sustainable solutions.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Inspired by the resilience of nature, our products are crafted to support the complete lifecycle of your crops—from seed to harvest. We are committed to a future where agriculture and ecology thrive in harmony.
+                Inspired by the resilience of nature, our products are crafted to support the complete lifecycle of your crops from seed to harvest. We are committed to a future where agriculture and ecology thrive in harmony.
               </p>
               <button
                 onClick={() => onNavigate('mission')}
