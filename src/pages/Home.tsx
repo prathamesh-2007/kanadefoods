@@ -1,6 +1,6 @@
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
 
@@ -10,28 +10,48 @@ interface HomeProps {
 
 export default function Home({ onNavigate }: HomeProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollPositionRef = useRef(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleManualScroll = (direction: 'left' | 'right') => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollAmount = 300; // pixels to scroll
+    const newPosition = direction === 'left'
+      ? Math.max(0, scrollPositionRef.current - scrollAmount)
+      : scrollPositionRef.current + scrollAmount;
+
+    scrollPositionRef.current = newPosition;
+    scrollContainer.style.transform = `translate3d(-${newPosition}px, 0, 0)`;
+
+    // Pause for 3 seconds after manual scroll
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 3000);
+  };
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     let animationId: number;
-    let scrollPosition = 0;
     const scrollSpeed = 0.5; // pixels per frame
 
     const animate = () => {
-      scrollPosition += scrollSpeed;
+      if (!isPaused) {
+        scrollPositionRef.current += scrollSpeed;
 
-      // Reset when we've scrolled through one full set
-      if (scrollContainer.scrollWidth && scrollPosition >= scrollContainer.scrollWidth / 2) {
-        scrollPosition = 0;
+        // Reset when we've scrolled through one full set
+        if (scrollContainer.scrollWidth && scrollPositionRef.current >= scrollContainer.scrollWidth / 2) {
+          scrollPositionRef.current = 0;
+        }
+
+        scrollContainer.style.transform = `translate3d(-${scrollPositionRef.current}px, 0, 0)`;
       }
-
-      scrollContainer.style.transform = `translate3d(-${scrollPosition}px, 0, 0)`;
       animationId = requestAnimationFrame(animate);
     };
 
@@ -42,7 +62,7 @@ export default function Home({ onNavigate }: HomeProps) {
         cancelAnimationFrame(animationId);
       }
     };
-  }, []);
+  }, [isPaused]);
 
   return (
     <div className="bg-[#fcfdfa] dark:bg-[#051f15] text-gray-800 dark:text-gray-200 font-body transition-colors duration-300">
@@ -52,7 +72,7 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="absolute inset-0 z-0">
           <img
             alt="Green agricultural field close up"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-60"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnUyP74lPMDBvWhMF_InYknRBK8sm8clmBZ0I5sXdHuQKJ6Y4nCmkYSXWQL0lYfQQH9XG-t0Y21ZLBPrv9RZpLobcmgz1L01ZcA_rGuKVPWor9o0C2ESf3GSHitBNkSWUfqMv6KPY9ccPk9_B3BaGSaRDdWND0psdM-XUHHpGG6zVcH2_M1q-EKNX0x16oDp4kgz6n9NVT55EUaD-UKHQnit4cAQLyzcLcv0SCCQPoSlTsBZl_z12gNPVOMlBtrXPhPqYLxOpiPXd_"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
@@ -100,10 +120,28 @@ export default function Home({ onNavigate }: HomeProps) {
             <h3 className="font-display font-bold text-white text-4xl md:text-6xl tracking-tight">Certified Excellence</h3>
             <div className="h-1 w-24 bg-[#cfb06e]/30 mx-auto mt-6 rounded-full"></div>
           </div>
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden group/carousel" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+            {/* Left Navigation Button */}
+            <button
+              onClick={() => handleManualScroll('left')}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-[#cfb06e] to-[#d4af37] hover:from-[#d4af37] hover:to-[#cfb06e] text-[#0b4d27] p-4 rounded-full transition-all duration-300 shadow-[0_8px_30px_rgba(207,176,110,0.4)] hover:shadow-[0_12px_40px_rgba(207,176,110,0.6)] hover:scale-110 opacity-0 group-hover/carousel:opacity-100"
+              aria-label="Scroll left"
+            >
+              <span className="material-icons-outlined text-2xl font-bold">chevron_left</span>
+            </button>
+
+            {/* Right Navigation Button */}
+            <button
+              onClick={() => handleManualScroll('right')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-[#cfb06e] to-[#d4af37] hover:from-[#d4af37] hover:to-[#cfb06e] text-[#0b4d27] p-4 rounded-full transition-all duration-300 shadow-[0_8px_30px_rgba(207,176,110,0.4)] hover:shadow-[0_12px_40px_rgba(207,176,110,0.6)] hover:scale-110 opacity-0 group-hover/carousel:opacity-100"
+              aria-label="Scroll right"
+            >
+              <span className="material-icons-outlined text-2xl font-bold">chevron_right</span>
+            </button>
+
             <div ref={scrollRef} className="flex py-8 will-change-transform">
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex gap-6 md:gap-12 flex-shrink-0">
+                <div key={setIndex} className="flex gap-12 md:gap-24 flex-shrink-0">
                   {[
                     { src: 'fssai.jpg', alt: 'FSSAI' },
                     { src: 'foreign-trade.jpg', alt: 'Foreign Trade' },
@@ -117,7 +155,7 @@ export default function Home({ onNavigate }: HomeProps) {
                   ].map((cert, i) => (
                     <div
                       key={i}
-                      className="flex-shrink-0 h-32 w-44 md:h-56 md:w-72 bg-white rounded-xl md:rounded-2xl border border-white/10 p-3 md:p-5 shadow-[0_20px_50px_rgba(207,176,110,0.15)] hover:shadow-[0_20px_80px_rgba(207,176,110,0.3)] transition-all duration-500 group overflow-hidden flex items-center justify-center"
+                      className="flex-shrink-0 h-32 w-44 md:h-56 md:w-72 bg-white rounded-xl md:rounded-2xl border border-white/10 p-3 md:p-5 shadow-[0_20px_50px_rgba(207,176,110,0.15)] hover:shadow-[0_20px_80px_rgba(207,176,110,0.3)] transition-all duration-500 group overflow-hidden flex items-center justify-center mx-2 md:mx-4"
                     >
                       <img
                         src={`/${cert.src}`}
