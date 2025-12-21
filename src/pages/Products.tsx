@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
@@ -235,6 +235,10 @@ const productCategories: ProductCategory[] = [
 export default function Products({ onNavigate }: ProductsProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const categories = ['all', 'grains', 'dals', 'flours', 'millets', 'processed', 'spices', 'premium_spices', 'dryfruits', 'sweeteners', 'oils', 'salts', 'superfoods'];
 

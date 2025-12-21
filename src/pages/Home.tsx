@@ -12,6 +12,10 @@ export default function Home({ onNavigate }: HomeProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
@@ -180,9 +184,9 @@ export default function Home({ onNavigate }: HomeProps) {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtftFE7lUOS6SmVwkPPaNZ62YUhTxOH2icB2vmi9I7dpGXvVdMypksULoNfBz_uU68_EQ4nnUi8I5591osYmGY9_WrfwZP1Q29Sq3NSZlMTKlrrboybf-IIK_qHPAJYFRNP6kfYP-vAebC6-MUeV4mbI2bm5lssmBjqHdBjgFllaTdNaOsRjEPMo80HuRV0aCPNzfmRNDgfxHVDzVJpyxCycVrGZLrV_ZRprApJFfktUmw5DuC7PB0OoQXO_XKcOot7OkOQ_RAfmj4"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-[#cfb06e] text-white p-6 rounded-xl shadow-lg hidden md:block">
-                <p className="text-3xl font-bold font-display">5+</p>
-                <p className="text-sm font-medium text-white/90">Years of Research</p>
+              <div className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 bg-[#cfb06e] text-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-lg">
+                <p className="text-xl md:text-3xl font-bold font-display">5+</p>
+                <p className="text-xs md:text-sm font-medium text-white/90">Years of Research</p>
               </div>
             </div>
             <div className="w-full lg:w-1/2">

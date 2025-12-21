@@ -26,7 +26,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <button onClick={() => handleNavClick('home')} className="flex-shrink-0 flex items-center gap-2 md:gap-3">
-            <img alt="Kanade Foods Logo" className="h-10 md:h-12 w-auto object-contain" src="/logo.png" />
+            <img alt="Kanade Foods Logo" className="h-10 md:h-12 w-auto object-contain border-2 border-white rounded-lg p-1" src="/logo.png" />
             <div>
               <h1 className="font-display font-bold text-base md:text-xl text-[#cfb06e] tracking-wide">KANADE</h1>
               <p className="text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400">Foods & Agri Ventures LLP</p>
