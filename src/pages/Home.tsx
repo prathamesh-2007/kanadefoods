@@ -240,7 +240,7 @@ export default function Home({ onNavigate }: HomeProps) {
           <span className="material-icons-outlined text-[#cfb06e] text-5xl mb-6">workspace_premium</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Committed to a Sustainable Earth</h2>
           <p className="text-xl text-green-100 mb-10 max-w-3xl mx-auto">
-            We don't just sell fertilizer; we partner with you to build a legacy of fertile land for generations to come. Join the Kanade movement today.
+            We don't just sell fertilizer; we partner with you to build a legacy of fertile land for generations to come. Join the Kanade services today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button

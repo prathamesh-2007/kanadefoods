@@ -15,7 +15,7 @@ export default function Mission({ onNavigate }: MissionProps) {
         <div className="bg-[#fcfdfa] dark:bg-[#051f15] font-body text-gray-800 dark:text-gray-200 transition-colors duration-300">
             <Navigation currentPage="home" onNavigate={onNavigate} />
 
-            <main className="pt-32 pb-16 md:py-32 relative min-h-screen flex flex-col items-center overflow-hidden">
+            <main className="pt-24 pb-12 md:pt-28 md:pb-16 relative min-h-screen flex flex-col items-center overflow-hidden">
                 {/* Background elements */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0b4d27]/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
@@ -23,15 +23,15 @@ export default function Mission({ onNavigate }: MissionProps) {
                 </div>
 
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-                    <div className="text-center mb-12">
-                        <span className="text-[#cfb06e] font-semibold tracking-widest text-sm uppercase block mb-4">About Us</span>
-                        <h1 className="font-display font-bold text-3xl md:text-5xl text-[#0b4d27] dark:text-white mb-6">Our Mission</h1>
+                    <div className="text-center mb-8">
+                        <span className="text-[#cfb06e] font-semibold tracking-widest text-sm uppercase block mb-3">About Us</span>
+                        <h1 className="font-display font-bold text-3xl md:text-5xl text-[#0b4d27] dark:text-white mb-4">Our Mission</h1>
                     </div>
 
-                    <div className="bg-white dark:bg-[#0c2e22] border border-white/5 rounded-2xl p-6 md:p-12 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+                    <div className="bg-white dark:bg-[#0c2e22] border border-white/5 rounded-2xl p-6 md:p-10 shadow-2xl backdrop-blur-xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#cfb06e]/50 to-transparent opacity-50"></div>
 
-                        <div className="space-y-6 text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-justify">
+                        <div className="space-y-4 text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed text-justify">
                             <p>
                                 Our company is passionately committed to delivering authentic, certified Indian organic agricultural products worldwide, reflecting India's rich heritage as one of the leading producers of organic farming.
                             </p>
@@ -51,7 +51,7 @@ export default function Mission({ onNavigate }: MissionProps) {
                                 Our vision is aligned with promoting a healthy lifestyle and a sustainable future through organic farming that benefits the planet and its people.
                             </p>
 
-                            <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-700 flex items-center justify-center">
+                            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700 flex items-center justify-center">
                                 <div className="text-center">
                                     <h3 className="font-display font-bold text-xl text-[#0b4d27] dark:text-[#cfb06e]">KANADE Foods and Agri Ventures LLP</h3>
                                 </div>

@@ -110,7 +110,14 @@ export default function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <span className="material-icons-outlined text-[#cfb06e] mt-0.5">place</span>
-                <span>A2/1 Goyal residency, Nashik Phata, Kasarwadi, Pune-411034</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=A2%2F1+Goyal+residency%2C+Nashik+Phata%2C+Kasarwadi%2C+Pune-411034"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#cfb06e] transition-colors"
+                >
+                  A2/1 Goyal residency, Nashik Phata, Kasarwadi, Pune-411034
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="material-icons-outlined text-[#cfb06e]">email</span>
