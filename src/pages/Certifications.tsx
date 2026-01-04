@@ -15,15 +15,15 @@ export default function Certifications({ onNavigate, onBack }: CertificationsPro
     }, []);
 
     const certifications = [
-        { src: 'fssai.jpg', alt: 'FSSAI' },
-        { src: 'foreign-trade.jpg', alt: 'Foreign Trade' },
-        { src: 'apeda.jpg', alt: 'APEDA' },
-        { src: 'startupindia.jpg', alt: 'Startup India' },
-        { src: 'india-organic.jpg', alt: 'India Organic' },
-        { src: 'usda-organic.png', alt: 'USDA Organic' },
-        { src: 'msme.jpg', alt: 'MSME' },
-        { src: 'sgs.jpg', alt: 'SGS' },
-        { src: 'jaivik-bharat.png', alt: 'Jaivik Bharat' }
+        { src: 'fssai.jpg', alt: 'Food Safety and Standards Authority of India (FSSAI) Certification' },
+        { src: 'foreign-trade.jpg', alt: 'Directorate General of Foreign Trade (DGFT) Registration' },
+        { src: 'apeda.jpg', alt: 'Agricultural and Processed Food Products Export Development Authority (APEDA) Certification' },
+        { src: 'startupindia.jpg', alt: 'Startup India Recognition' },
+        { src: 'india-organic.jpg', alt: 'India Organic NPOP Certification' },
+        { src: 'usda-organic.png', alt: 'USDA Organic Certification' },
+        { src: 'msme.jpg', alt: 'Ministry of Micro, Small and Medium Enterprises (MSME) Registration' },
+        { src: 'sgs.jpg', alt: 'SGS Quality Assurance Certification' },
+        { src: 'jaivik-bharat.png', alt: 'Jaivik Bharat FSSAI Organic Logo' }
     ];
 
     return (

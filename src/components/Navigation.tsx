@@ -90,6 +90,8 @@ export default function Navigation({ currentPage, onNavigate, onBack }: Navigati
               id="mobile-menu-button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`hamburger-btn text-gray-600 dark:text-gray-300 hover:text-[#0b4d27] focus:outline-none p-2 rounded-lg transition-colors ${mobileMenuOpen ? 'is-active' : ''}`}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
             >
               <span className="block w-6 h-0.5 bg-current mb-1.5 transition-all"></span>
               <span className="block w-6 h-0.5 bg-current mb-1.5 transition-all"></span>

@@ -16,6 +16,7 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
   const [showServicesPresentation, setShowServicesPresentation] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const scrollPositionRef = useRef(0);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,9 +42,17 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
     scrollPositionRef.current = newPosition;
     scrollContainer.style.transform = `translate3d(-${newPosition}px, 0, 0)`;
 
+    // Clear any existing pause timeout
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current);
+    }
+
     // Pause for 3 seconds after manual scroll
     setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 3000);
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+      pauseTimeoutRef.current = null;
+    }, 3000);
   };
 
   useEffect(() => {
@@ -72,6 +81,9 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
     return () => {
       if (animationId) {
         cancelAnimationFrame(animationId);
+      }
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
       }
     };
   }, [isPaused]);
@@ -181,15 +193,15 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
                   {[...Array(2)].map((_, setIndex) => (
                     <div key={setIndex} className="flex gap-12 md:gap-24 flex-shrink-0">
                       {[
-                        { src: 'fssai.jpg', alt: 'FSSAI' },
-                        { src: 'foreign-trade.jpg', alt: 'Foreign Trade' },
-                        { src: 'apeda.jpg', alt: 'APEDA' },
-                        { src: 'startupindia.jpg', alt: 'Startup India' },
-                        { src: 'india-organic.jpg', alt: 'India Organic' },
-                        { src: 'usda-organic.png', alt: 'USDA Organic' },
-                        { src: 'msme.jpg', alt: 'MSME' },
-                        { src: 'sgs.jpg', alt: 'SGS' },
-                        { src: 'jaivik-bharat.png', alt: 'Jaivik Bharat' }
+                        { src: 'fssai.jpg', alt: 'Food Safety and Standards Authority of India (FSSAI) Certification' },
+                        { src: 'foreign-trade.jpg', alt: 'Directorate General of Foreign Trade (DGFT) Registration' },
+                        { src: 'apeda.jpg', alt: 'Agricultural and Processed Food Products Export Development Authority (APEDA) Certification' },
+                        { src: 'startupindia.jpg', alt: 'Startup India Recognition' },
+                        { src: 'india-organic.jpg', alt: 'India Organic NPOP Certification' },
+                        { src: 'usda-organic.png', alt: 'USDA Organic Certification' },
+                        { src: 'msme.jpg', alt: 'Ministry of Micro, Small and Medium Enterprises (MSME) Registration' },
+                        { src: 'sgs.jpg', alt: 'SGS Quality Assurance Certification' },
+                        { src: 'jaivik-bharat.png', alt: 'Jaivik Bharat FSSAI Organic Logo' }
                       ].map((cert, i) => (
                         <div
                           key={i}
@@ -293,48 +305,48 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
                 <p className="text-gray-600 dark:text-gray-400 mb-10">Discover our range of fertilizers tailored for different soil types and crop needs.</p>
                 <div className="flex flex-col items-center gap-6 w-full max-w-sm mx-auto">
                   {!showDomesticOptions ? (
-                    <div className="flex flex-col gap-4 w-full animate-fade-in">
+                    <div className="flex flex-col gap-5 w-full animate-fade-in group">
                       <button
                         onClick={() => setShowDomesticOptions(true)}
-                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#cfb06e] text-[#0b4d27] text-lg font-bold hover:bg-[#d4af37] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
+                        className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-[#cfb06e] text-[#0b4d27] text-xl font-bold transition-all shadow-lg hover:shadow-[#cfb06e]/30 transform hover:-translate-y-1 w-full relative overflow-hidden"
                       >
-                        <span className="material-icons-outlined mr-3">home</span>
+                        <span className="material-icons-outlined mr-4 text-2xl">home</span>
                         Domestic
                       </button>
                       <button
                         onClick={() => onNavigate('services')}
-                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#0b4d27] text-white text-lg font-bold hover:bg-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
+                        className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-[#0b4d27] border-2 border-[#cfb06e] text-white text-xl font-bold transition-all shadow-lg hover:shadow-[#cfb06e]/20 transform hover:-translate-y-1 w-full relative overflow-hidden"
                       >
-                        <span className="material-icons-outlined mr-3">public</span>
+                        <span className="material-icons-outlined mr-4 text-2xl">public</span>
                         International
                       </button>
                     </div>
                   ) : (
-                    <div className="flex flex-col gap-4 w-full animate-fade-in">
+                    <div className="flex flex-col gap-5 w-full animate-fade-in">
                       <button
                         onClick={() => {
                           setShowServicesPresentation(true);
                           window.scrollTo(0, 0);
                         }}
-                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#cfb06e] text-[#0b4d27] text-lg font-bold hover:bg-[#d4af37] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
+                        className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-[#cfb06e] text-[#0b4d27] text-xl font-bold transition-all shadow-lg hover:shadow-[#cfb06e]/30 transform hover:-translate-y-1 w-full"
                       >
-                        <span className="material-icons-outlined mr-3 text-2xl">medical_services</span>
+                        <span className="material-icons-outlined mr-4 text-2xl">medical_services</span>
                         Our Services
                       </button>
                       <button
                         onClick={() => onNavigate('services')}
-                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#0b4d27] text-white text-lg font-bold hover:bg-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
+                        className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-[#0b4d27] border-2 border-[#cfb06e] text-white text-xl font-bold transition-all shadow-lg hover:shadow-[#cfb06e]/20 transform hover:-translate-y-1 w-full"
                       >
-                        <span className="material-icons-outlined mr-3 text-2xl">shopping_basket</span>
+                        <span className="material-icons-outlined mr-4 text-2xl">shopping_basket</span>
                         Our Grocery Product
                       </button>
-                      <div className="mt-4 flex justify-center">
+                      <div className="mt-6 flex justify-center">
                         <button
                           onClick={() => setShowDomesticOptions(false)}
-                          className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all"
+                          className="flex items-center justify-center w-14 h-14 rounded-full border border-white/30 text-white hover:bg-white/10 hover:border-white transition-all shadow-md group"
                           title="Back"
                         >
-                          <span className="material-icons-outlined">close</span>
+                          <span className="material-icons-outlined group-hover:rotate-90 transition-transform duration-300">close</span>
                         </button>
                       </div>
                     </div>
