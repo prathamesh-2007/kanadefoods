@@ -291,50 +291,52 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
               <div className="text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-[#0b4d27] dark:text-white mb-4">Our Premium Services</h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-10">Discover our range of fertilizers tailored for different soil types and crop needs.</p>
-                <div className="flex flex-col items-center gap-6">
+                <div className="flex flex-col items-center gap-6 w-full max-w-sm mx-auto">
                   {!showDomesticOptions ? (
-                    <div className="flex flex-col sm:flex-row justify-center gap-6">
+                    <div className="flex flex-col gap-4 w-full animate-fade-in">
                       <button
                         onClick={() => setShowDomesticOptions(true)}
-                        className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white dark:bg-[#0c2e22] border border-[#0b4d27] dark:border-[#cfb06e] text-[#0b4d27] dark:text-[#cfb06e] text-lg font-medium hover:bg-green-50 dark:hover:bg-[#cfb06e]/10 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#cfb06e] text-[#0b4d27] text-lg font-bold hover:bg-[#d4af37] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
                       >
-                        <span className="material-icons-outlined mr-2">home</span>
+                        <span className="material-icons-outlined mr-3">home</span>
                         Domestic
                       </button>
                       <button
                         onClick={() => onNavigate('services')}
-                        className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white dark:bg-[#0c2e22] border border-[#0b4d27] dark:border-[#cfb06e] text-[#0b4d27] dark:text-[#cfb06e] text-lg font-medium hover:bg-green-50 dark:hover:bg-[#cfb06e]/10 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#0b4d27] text-white text-lg font-bold hover:bg-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
                       >
-                        <span className="material-icons-outlined mr-2">public</span>
+                        <span className="material-icons-outlined mr-3">public</span>
                         International
                       </button>
                     </div>
                   ) : (
-                    <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in">
+                    <div className="flex flex-col gap-4 w-full animate-fade-in">
                       <button
                         onClick={() => {
                           setShowServicesPresentation(true);
                           window.scrollTo(0, 0);
                         }}
-                        className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#cfb06e] text-[#0b4d27] text-lg font-bold hover:bg-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#cfb06e] text-[#0b4d27] text-lg font-bold hover:bg-[#d4af37] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
                       >
-                        <span className="material-icons-outlined mr-2">medical_services</span>
+                        <span className="material-icons-outlined mr-3 text-2xl">medical_services</span>
                         Our Services
                       </button>
                       <button
                         onClick={() => onNavigate('services')}
-                        className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#0b4d27] text-white text-lg font-bold hover:bg-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#0b4d27] text-white text-lg font-bold hover:bg-green-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full"
                       >
-                        <span className="material-icons-outlined mr-2">shopping_basket</span>
+                        <span className="material-icons-outlined mr-3 text-2xl">shopping_basket</span>
                         Our Grocery Product
                       </button>
-                      <button
-                        onClick={() => setShowDomesticOptions(false)}
-                        className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gray-300 text-gray-400 hover:text-red-500 hover:border-red-500 transition-all"
-                        title="Back"
-                      >
-                        <span className="material-icons-outlined">close</span>
-                      </button>
+                      <div className="mt-4 flex justify-center">
+                        <button
+                          onClick={() => setShowDomesticOptions(false)}
+                          className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all"
+                          title="Back"
+                        >
+                          <span className="material-icons-outlined">close</span>
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
