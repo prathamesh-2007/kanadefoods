@@ -29,6 +29,13 @@ export default function Footer({ onNavigate }: FooterProps) {
         element?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
+    if (linkName === 'Soil Conditioner Fertilizer') {
+      onNavigate('home');
+      setTimeout(() => {
+        const element = document.getElementById('services');
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
     if (linkName === 'Certifications') {
       onNavigate('certifications');
     }
@@ -49,7 +56,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               onClick={() => onNavigate('home')}
               className="flex items-center gap-3 mb-4 hover:opacity-80 transition-opacity text-left"
             >
-              <img alt="Kanade Foods Logo" className="h-10 w-auto object-contain" src="/logo1.png" />
+              <img alt="Kanade Foods Logo" className="h-10 w-auto object-contain rounded-lg" src="/logo2.jpeg" />
               <div>
                 <h3 className="font-display font-bold text-lg text-[#cfb06e]">KANADE</h3>
                 <p className="text-[0.65rem] uppercase tracking-widest text-gray-400">Foods & Agri Ventures</p>
@@ -80,6 +87,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 { name: 'About Us', hash: 'about' },
                 { name: 'Our Services', hash: 'services' },
                 { name: 'Certifications', hash: '' },
+                { name: 'Soil Conditioner Fertilizer', hash: 'services' },
                 { name: 'Sustainability', hash: 'sustainability' },
               ].map((link) => (
                 <li key={link.name}>
@@ -137,12 +145,12 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li className="flex items-center gap-3">
                 <span className="material-icons-outlined text-[#cfb06e]">phone</span>
                 <div>
-                  <a className="hover:text-white" href="tel:+919881711038">
-                    +91 98817 11038
+                  <a className="hover:text-white" href="tel:+919156912328">
+                    +91 91569 12328
                   </a>
                   ,{' '}
-                  <a className="hover:text-white" href="tel:+918793050642">
-                    +91 87930 50642
+                  <a className="hover:text-white" href="tel:+917709987183">
+                    +91 77099 87183
                   </a>
                 </div>
               </li>

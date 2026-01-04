@@ -37,7 +37,7 @@ export default function Navigation({ currentPage, onNavigate, onBack }: Navigati
               </button>
             )}
             <button onClick={() => handleNavClick('home')} className="flex-shrink-0 flex items-center gap-2 md:gap-3">
-              <img alt="Kanade Foods Logo" className="h-10 md:h-12 w-auto object-contain" src="/logo1.png" />
+              <img alt="Kanade Foods Logo" className="h-10 md:h-12 w-auto object-contain rounded-lg" src="/logo2.jpeg" />
               <div>
                 <h1 className="font-display font-bold text-base md:text-xl text-[#cfb06e] tracking-wide">KANADE</h1>
                 <p className="text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400">Foods & Agri Ventures LLP</p>
