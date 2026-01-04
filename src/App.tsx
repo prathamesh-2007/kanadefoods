@@ -13,8 +13,12 @@ type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'te
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [history, setHistory] = useState<Page[]>(['home']);
+  const [homeKey, setHomeKey] = useState(0);
 
   const navigateTo = (page: Page) => {
+    if (page === 'home' && currentPage === 'home') {
+      setHomeKey(prev => prev + 1);
+    }
     if (page !== currentPage) {
       setHistory(prev => [...prev, page]);
       setCurrentPage(page);
@@ -36,7 +40,7 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <Home onNavigate={navigateTo} onBack={handleBack} />;
+        return <Home key={homeKey} onNavigate={navigateTo} onBack={handleBack} />;
       case 'services':
         return <Products onNavigate={navigateTo} onBack={handleBack} />;
       case 'contact':

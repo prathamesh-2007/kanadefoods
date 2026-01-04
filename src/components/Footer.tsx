@@ -45,13 +45,16 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center gap-3 mb-4">
+            <button
+              onClick={() => onNavigate('home')}
+              className="flex items-center gap-3 mb-4 hover:opacity-80 transition-opacity text-left"
+            >
               <img alt="Kanade Foods Logo" className="h-10 w-auto object-contain" src="/logo1.png" />
               <div>
                 <h3 className="font-display font-bold text-lg text-[#cfb06e]">KANADE</h3>
                 <p className="text-[0.65rem] uppercase tracking-widest text-gray-400">Foods & Agri Ventures</p>
               </div>
-            </div>
+            </button>
             <p className="text-gray-400 leading-relaxed text-sm">
               Cultivating a sustainable future through organic farming and eco-friendly agricultural solutions.
             </p>
