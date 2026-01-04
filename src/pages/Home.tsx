@@ -399,9 +399,7 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
                     loading="lazy"
                     onClick={() => setSelectedImage(src)}
                   />
-                  <div className="p-2 md:p-4 bg-[#fcfdfa] dark:bg-[#02140d] border-t border-[#cfb06e]/20 text-center text-xs md:text-sm text-gray-500 font-medium">
-                    Slide {index + 1}
-                  </div>
+
                 </div>
               ))}
             </div>
