@@ -330,8 +330,8 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
                         }}
                         className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-[#cfb06e] text-[#0b4d27] text-xl font-bold transition-all shadow-lg hover:shadow-[#cfb06e]/30 transform hover:-translate-y-1 w-full"
                       >
-                        <span className="material-icons-outlined mr-4 text-2xl">medical_services</span>
-                        Our Services
+                        <span className="material-icons-outlined mr-4 text-2xl">eco</span>
+                        Our Fertilizers
                       </button>
                       <button
                         onClick={() => onNavigate('services')}
@@ -381,7 +381,7 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
         <div className="pt-32 pb-16 bg-white dark:bg-[#051f15] min-h-screen">
           <div className="max-w-5xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-[#0b4d27] dark:text-[#cfb06e] mb-4">Our Services</h2>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-[#0b4d27] dark:text-[#cfb06e] mb-4">Our Fertilizers</h2>
               <div className="w-24 h-1 bg-[#cfb06e] mx-auto rounded-full mb-6"></div>
               <p className="text-gray-600 dark:text-gray-400">Presentation of our Premium Soil Conditioner Solutions</p>
             </div>
@@ -412,7 +412,7 @@ export default function Home({ onNavigate, onBack }: HomeProps) {
                 }}
                 className="bg-[#0b4d27] text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-green-800 transition-all transform hover:-translate-y-1"
               >
-                Back to Domestic Services
+                Back to Domestic Fertilizers
               </button>
             </div>
           </div>
