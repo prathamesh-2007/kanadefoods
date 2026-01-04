@@ -3,13 +3,14 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { countryCodes } from '../data/countryCodes';
 
-type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
+type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'terms' | 'privacy';
 
 interface ContactProps {
   onNavigate: (page: Page) => void;
+  onBack: () => void;
 }
 
-export default function Contact({ onNavigate }: ContactProps) {
+export default function Contact({ onNavigate, onBack }: ContactProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -62,7 +63,7 @@ export default function Contact({ onNavigate }: ContactProps) {
 
   return (
     <div className="bg-[#fcfdfa] dark:bg-[#051f15] font-body text-gray-800 dark:text-gray-200 transition-colors duration-300">
-      <Navigation currentPage="contact" onNavigate={onNavigate} />
+      <Navigation currentPage="contact" onNavigate={onNavigate} onBack={onBack} />
 
       <main className="pt-32 pb-16 md:py-32 relative min-h-screen flex items-center overflow-hidden">
         {/* ... background elements ... */}

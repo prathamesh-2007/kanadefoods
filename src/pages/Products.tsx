@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
-type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
+type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'terms' | 'privacy';
 
 interface ProductsProps {
   onNavigate: (page: Page) => void;
+  onBack: () => void;
 }
 
 interface ProductCategory {
@@ -232,7 +233,7 @@ const productCategories: ProductCategory[] = [
   },
 ];
 
-export default function Products({ onNavigate }: ProductsProps) {
+export default function Products({ onNavigate, onBack }: ProductsProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -250,7 +251,7 @@ export default function Products({ onNavigate }: ProductsProps) {
 
   return (
     <div className="bg-[#fcfdfa] dark:bg-[#051f15] font-body text-gray-800 dark:text-gray-200 transition-colors duration-300">
-      <Navigation currentPage="services" onNavigate={onNavigate} />
+      <Navigation currentPage="services" onNavigate={onNavigate} onBack={onBack} />
 
       <header className="relative bg-[#0b4d27] pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10">

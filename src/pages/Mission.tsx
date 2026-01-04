@@ -4,16 +4,17 @@ import Footer from '../components/Footer';
 
 // Define the Page type locally or import it if it were centralized (it's not currently)
 // We use 'home' for navigation current page as 'mission' isn't a top-level nav item in the menu
-type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
+type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'terms' | 'privacy';
 
 interface MissionProps {
     onNavigate: (page: Page) => void;
+    onBack: () => void;
 }
 
-export default function Mission({ onNavigate }: MissionProps) {
+export default function Mission({ onNavigate, onBack }: MissionProps) {
     return (
         <div className="bg-[#fcfdfa] dark:bg-[#051f15] font-body text-gray-800 dark:text-gray-200 transition-colors duration-300">
-            <Navigation currentPage="home" onNavigate={onNavigate} />
+            <Navigation currentPage="home" onNavigate={onNavigate} onBack={onBack} />
 
             <main className="pt-24 pb-12 md:pt-28 md:pb-16 relative min-h-screen flex flex-col items-center overflow-hidden">
                 {/* Background elements */}

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
-type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
+type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'terms' | 'privacy';
 
 interface NavigationProps {
   currentPage: Page;
   onNavigate: (page: Page) => void;
+  onBack?: () => void;
 }
 
-export default function Navigation({ currentPage, onNavigate }: NavigationProps) {
+export default function Navigation({ currentPage, onNavigate, onBack }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleNavClick = (page: Page, hash?: string) => {
@@ -25,13 +26,24 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     <nav className="fixed w-full z-50 bg-white/90 dark:bg-[#051f15]/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <button onClick={() => handleNavClick('home')} className="flex-shrink-0 flex items-center gap-2 md:gap-3">
-            <img alt="Kanade Foods Logo" className="h-10 md:h-12 w-auto object-contain" src="/logo1.png" />
-            <div>
-              <h1 className="font-display font-bold text-base md:text-xl text-[#cfb06e] tracking-wide">KANADE</h1>
-              <p className="text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400">Foods & Agri Ventures LLP</p>
-            </div>
-          </button>
+          <div className="flex items-center gap-4">
+            {currentPage !== 'home' && onBack && (
+              <button
+                onClick={onBack}
+                className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all"
+                aria-label="Go back"
+              >
+                <span className="material-icons-outlined text-2xl">arrow_back</span>
+              </button>
+            )}
+            <button onClick={() => handleNavClick('home')} className="flex-shrink-0 flex items-center gap-2 md:gap-3">
+              <img alt="Kanade Foods Logo" className="h-10 md:h-12 w-auto object-contain" src="/logo1.png" />
+              <div>
+                <h1 className="font-display font-bold text-base md:text-xl text-[#cfb06e] tracking-wide">KANADE</h1>
+                <p className="text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400">Foods & Agri Ventures LLP</p>
+              </div>
+            </button>
+          </div>
           <div className="hidden md:flex space-x-8 items-center">
             <button
               className={`${currentPage === 'home' ? 'text-[#0b4d27] dark:text-[#cfb06e] font-bold' : 'text-gray-700 dark:text-gray-300 hover:text-[#0b4d27] dark:hover:text-[#cfb06e]'

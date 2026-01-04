@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
-type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
+type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'terms' | 'privacy';
 
 interface CertificationsProps {
     onNavigate: (page: Page) => void;
+    onBack: () => void;
 }
 
-export default function Certifications({ onNavigate }: CertificationsProps) {
+export default function Certifications({ onNavigate, onBack }: CertificationsProps) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -27,7 +28,7 @@ export default function Certifications({ onNavigate }: CertificationsProps) {
 
     return (
         <div className="bg-[#fcfdfa] dark:bg-[#051f15] font-body text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
-            <Navigation currentPage="certifications" onNavigate={onNavigate} />
+            <Navigation currentPage="certifications" onNavigate={onNavigate} onBack={onBack} />
 
             <header className="relative bg-[#0b4d27] pt-32 pb-16 overflow-hidden">
                 <div className="absolute inset-0 opacity-10">

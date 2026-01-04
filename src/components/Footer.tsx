@@ -1,12 +1,12 @@
 
-type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications';
+type Page = 'home' | 'services' | 'contact' | 'mission' | 'certifications' | 'terms' | 'privacy';
 
 interface FooterProps {
   onNavigate: (page: Page) => void;
 }
 
 export default function Footer({ onNavigate }: FooterProps) {
-  const handleNavigation = (linkName: string, hash?: string) => {
+  const handleNavigation = (linkName: string) => {
     if (linkName === 'Home') onNavigate('home');
     if (linkName === 'About Us') {
       onNavigate('home');
@@ -31,6 +31,12 @@ export default function Footer({ onNavigate }: FooterProps) {
     }
     if (linkName === 'Certifications') {
       onNavigate('certifications');
+    }
+    if (linkName === 'Privacy Policy') {
+      onNavigate('privacy');
+    }
+    if (linkName === 'Terms of Service') {
+      onNavigate('terms');
     }
   };
 
@@ -75,7 +81,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               ].map((link) => (
                 <li key={link.name}>
                   <button
-                    onClick={() => handleNavigation(link.name, link.hash)}
+                    onClick={() => handleNavigation(link.name)}
                     className="text-gray-400 hover:text-[#cfb06e] transition-colors flex items-center gap-2 group text-sm"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#cfb06e]/50 group-hover:bg-[#cfb06e] transition-colors"></span>
@@ -139,20 +145,26 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-center gap-3">
                 <span className="material-icons-outlined text-[#cfb06e]">verified</span>
-                <span>Reg. No: AOC-0498, Dt: 01/05/2025</span>
+                <span>Reg. No: AOC-0498, Dt: 01/05/2026</span>
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© 2025 Kanade Foods and Agri Ventures LLP. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a className="hover:text-white transition-colors" href="#">
+          <p>© 2026 Kanade Foods and Agri Ventures LLP. All rights reserved.</p>
+          <div className="flex gap-8">
+            <button
+              onClick={() => onNavigate('privacy')}
+              className="text-[#4a9eff] hover:text-[#76b9ff] transition-colors font-medium border-b border-transparent hover:border-[#4a9eff] bg-transparent cursor-pointer"
+            >
               Privacy Policy
-            </a>
-            <a className="hover:text-white transition-colors" href="#">
+            </button>
+            <button
+              onClick={() => onNavigate('terms')}
+              className="text-[#4a9eff] hover:text-[#76b9ff] transition-colors font-medium border-b border-transparent hover:border-[#4a9eff] bg-transparent cursor-pointer"
+            >
               Terms of Service
-            </a>
+            </button>
           </div>
         </div>
       </div>
